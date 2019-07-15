@@ -175,17 +175,7 @@ if (!http) {
 http.onreadystatechange = alertContents;
 http.open('GET', url, true);
 http.send();
-
-
-// function alertContents() {
-// if (http.readyState === XMLHttpRequest.DONE) {
-//   if (http.status === 200) {
-//     console.log(http.responseText);
-//   } else {
-//     console.log('Il y a eu un problème avec la requête.');
-//   }
-// }
-// }
+console.log("fini");
 }, 30000);
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
