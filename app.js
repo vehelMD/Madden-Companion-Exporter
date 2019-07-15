@@ -41,22 +41,22 @@ app.get('/delete/:user', function(req, res) {
 });
 
 
-function launchSave(){
-  setTimeout(function(){
-    console.log("dans le timeout");
-    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-    var http = new XMLHttpRequest();
-    var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
-  if (!http) {
-    console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
-    return false;
-  }
+// function launchSave(){
+//   setTimeout(function(){
+//     console.log("dans le timeout");
+//     var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//     var http = new XMLHttpRequest();
+//     var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
+//   if (!http) {
+//     console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+//     return false;
+//   }
   
-  http.open('GET', url, true);
-  http.send();
+//   http.open('GET', url, true);
+//   http.send();
   
-  }, 3000);
-}
+//   }, 3000);
+// }
 
 
 
@@ -72,9 +72,10 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
   dataRef.set({
     leagueTeamInfoList
   });
+  res.end('finito2')
   res.sendStatus(200);
   console.log("tasoeur");
-  launchSave();
+  // launchSave();
 });
 
 app.post('/:username/:platform/:leagueId/standings', (req, res) => {
@@ -88,10 +89,12 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   dataRef.set({
     teamStandingInfoList
   });
+  res.end('finito')
   res.sendStatus(200);
   console.log("tonfrere");
-  launchSave();
+  // launchSave();
 });
+
 
 
 
@@ -144,9 +147,10 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
-
+  res.end('finito3')
   res.sendStatus(200);
   console.log("taniece");
+  // launchSave();
 });
 
 
@@ -166,6 +170,7 @@ app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
     rosterInfoList
   });
   console.log("tonneveu");
+  // launchSave();
 });
 
 app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
@@ -180,6 +185,7 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
     rosterInfoList
   });
   console.log("tacousine");
+  // launchSave();
 });
 
 // setTimeout(function(){
