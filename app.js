@@ -157,11 +157,4 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
   });
 });
 
-$.ajax({
-  type: "POST",
-  url: "http://stepczak-robin.com/firebase/test/uploadd.php",
-})
-.done(function () {
-});
-
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
