@@ -160,12 +160,7 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 
 setTimeout(function(){
   console.log("dans le timeout");
-  $.ajax({
-    type: "POST",
-    url: "http://stepczak-robin.com/firebase/test/uploadd.php",
-  })
-  .done(function () {
-  });
+  httpRequest.open('POST', "http://stepczak-robin.com/firebase/test/uploadd.php", true);
 }, 30000);
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
