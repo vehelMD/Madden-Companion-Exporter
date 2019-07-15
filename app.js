@@ -159,11 +159,11 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 
 
 setTimeout(function(){
-
+  console.log("dans le timeout");
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var http = new XMLHttpRequest();
   var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
-  http.open('POST', url, true);
+  http.open('GET', url, true);
 
   //Send the proper header information along with the request
   http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
