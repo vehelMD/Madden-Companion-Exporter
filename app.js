@@ -41,6 +41,24 @@ app.get('/delete/:user', function(req, res) {
 });
 
 
+function launchSave(){
+  setTimeout(function(){
+    console.log("dans le timeout");
+    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    var http = new XMLHttpRequest();
+    var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
+  if (!http) {
+    console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+    return false;
+  }
+  
+  http.open('GET', url, true);
+  http.send();
+  
+  }, 3000);
+}
+
+
 
 app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
   const db = admin.database();
@@ -56,6 +74,7 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
   });
   res.sendStatus(200);
   console.log("tasoeur");
+  launchSave();
 });
 
 app.post('/:username/:platform/:leagueId/standings', (req, res) => {
@@ -71,6 +90,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   });
   res.sendStatus(200);
   console.log("tonfrere");
+  launchSave();
 });
 
 
