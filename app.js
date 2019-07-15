@@ -56,7 +56,6 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
     leagueTeamInfoList
   });
   res.sendStatus(200);
-  return res.send("Finito2");
   console.log("tasoeur");
 });
 
@@ -71,8 +70,8 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   dataRef.set({
     teamStandingInfoList
   });
-  res.sendStatus(200);
   return res.send("Finito");
+  res.sendStatus(200);
   console.log("tonfrere");
 });
 
