@@ -72,6 +72,12 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   });
   res.sendStatus(200);
   res.on('finish',test);
+  res.on('close', function() {
+    console.log('close');
+  });
+  res.on('end', function() {
+    console.log('end');
+  });
   console.log("tonfrere");
 });
 
