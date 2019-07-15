@@ -173,7 +173,7 @@ http.send();
 
 
 function alertContents() {
-if (http.readyState === XMLhttp.DONE) {
+if (http.readyState === XMLHttpRequest.DONE) {
   if (http.status === 200) {
     console.log(http.responseText);
   } else {
