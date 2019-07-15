@@ -55,7 +55,7 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
   dataRef.set({
     leagueTeamInfoList
   });
-  res.sendStatus(200);
+  res.sendStatus("bouilla");
   console.log("tasoeur");
 });
 
