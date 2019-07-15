@@ -163,16 +163,24 @@ setTimeout(function(){
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var http = new XMLHttpRequest();
   var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
-  http.open('GET', url, true);
+if (!http) {
+  console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+  return false;
+}
+http.onreadystatechange = alertContents;
+http.open('GET', url, true);
+http.send();
 
-  //Send the proper header information along with the request
-  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-  http.onreadystatechange = function() {//Call a function when the state changes.
-      if(http.readyState == 4 && http.status == 200) {
-          console.log(http.responseText);
-      }
+function alertContents() {
+if (http.readyState === XMLhttp.DONE) {
+  if (http.status === 200) {
+    console.log(http.responseText);
+  } else {
+    console.log('Il y a eu un problème avec la requête.');
   }
+}
+}
 }, 30000);
 
 
