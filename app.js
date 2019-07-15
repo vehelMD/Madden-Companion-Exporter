@@ -70,7 +70,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   dataRef.set({
     teamStandingInfoList
   });
-  return res.send("Finito");
+  res.send("Finito");
   res.sendStatus(200);
   console.log("tonfrere");
 });
