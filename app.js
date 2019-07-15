@@ -56,6 +56,7 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
     leagueTeamInfoList
   });
   res.sendStatus(200);
+  return res.end("Finito2");
   console.log("tasoeur");
 });
 
