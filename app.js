@@ -38,6 +38,7 @@ app.get('/delete/:user', function(req, res) {
   const dataRef = ref.child(req.params.user);
   dataRef.remove();
   return res.send('Madden Data Cleared for ' + req.params.user);
+  console.log(tonpere);
 });
 
 
@@ -55,6 +56,7 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
     leagueTeamInfoList
   });
   res.sendStatus(200);
+  console.log(tasoeur);
 });
 
 app.post('/:username/:platform/:leagueId/standings', (req, res) => {
@@ -69,6 +71,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
     teamStandingInfoList
   });
   res.sendStatus(200);
+  console.log(tonfrere);
 });
 
 
@@ -124,6 +127,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
   }
 
   res.sendStatus(200);
+  console.log(taniece);
 });
 
 
@@ -142,6 +146,7 @@ app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
   dataRef.set({
     rosterInfoList
   });
+  console.log(tonneveu);
 });
 
 app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
@@ -155,8 +160,8 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
   dataRef.set({
     rosterInfoList
   });
+  console.log(tacousine);
 });
-
 
 setTimeout(function(){
   console.log("dans le timeout");
@@ -172,17 +177,15 @@ http.open('GET', url, true);
 http.send();
 
 
-function alertContents() {
-if (http.readyState === XMLHttpRequest.DONE) {
-  if (http.status === 200) {
-    console.log(http.responseText);
-  } else {
-    console.log('Il y a eu un problème avec la requête.');
-  }
-}
-}
+// function alertContents() {
+// if (http.readyState === XMLHttpRequest.DONE) {
+//   if (http.status === 200) {
+//     console.log(http.responseText);
+//   } else {
+//     console.log('Il y a eu un problème avec la requête.');
+//   }
+// }
+// }
 }, 30000);
-
-
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
