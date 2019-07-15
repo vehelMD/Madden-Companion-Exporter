@@ -172,7 +172,6 @@ if (!http) {
   console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
   return false;
 }
-http.onreadystatechange = alertContents;
 http.open('GET', url, true);
 http.send();
 console.log("fini");
