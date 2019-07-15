@@ -55,7 +55,6 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
   dataRef.set({
     leagueTeamInfoList
   });
-  res.end('finito2');
   res.sendStatus(200);
   console.log("tasoeur");
 });
@@ -71,7 +70,6 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   dataRef.set({
     teamStandingInfoList
   });
-  res.end('finito');
   res.sendStatus(200);
   console.log("tonfrere");
 });
@@ -128,7 +126,6 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
-  res.end('finito3');
   res.sendStatus(200);
   console.log("taniece");
 });
