@@ -71,6 +71,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
     teamStandingInfoList
   });
   res.sendStatus(200);
+  res.on('finish',<test>);
   console.log("tonfrere");
 });
 
@@ -164,5 +165,9 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 });
 
 console.log("fini");
+
+function test(){
+  console.log('tarace');
+}
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
