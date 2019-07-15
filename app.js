@@ -71,7 +71,6 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
     teamStandingInfoList
   });
   res.sendStatus(200);
-  res.render({msg:'hello'});
   console.log("tonfrere");
 });
 
