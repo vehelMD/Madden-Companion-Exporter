@@ -161,10 +161,20 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 setTimeout(function(){
 
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-  var httpRequest = new XMLHttpRequest();
+  var http = new XMLHttpRequest();
+  var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
+  http.open('POST', url, true);
 
-  console.log("dans le timeout");
-  httpRequest.open('POST', "http://stepczak-robin.com/firebase/test/uploadd.php", true);
+  //Send the proper header information along with the request
+  http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  http.onreadystatechange = function() {//Call a function when the state changes.
+      if(http.readyState == 4 && http.status == 200) {
+          console.log(http.responseText);
+      }
+  }
 }, 30000);
+
+
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
