@@ -127,6 +127,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
+  res.on('finish',testih);
   res.sendStatus(200);
   console.log("taniece");
 });
@@ -168,6 +169,10 @@ console.log("fini");
 
 function test(){
   console.log('tarace');
+}
+
+function testih(){
+  console.log('tarace est toi');
 }
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
