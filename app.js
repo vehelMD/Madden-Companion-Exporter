@@ -182,20 +182,20 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
   console.log("tacousine");
 });
 
-setTimeout(function(){
-  console.log("dans le timeout");
-  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-  var http = new XMLHttpRequest();
-  var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
-if (!http) {
-  console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
-  return false;
-}
+// setTimeout(function(){
+//   console.log("dans le timeout");
+//   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+//   var http = new XMLHttpRequest();
+//   var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
+// if (!http) {
+//   console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+//   return false;
+// }
 
-http.open('GET', url, true);
-http.send();
+// http.open('GET', url, true);
+// http.send();
 
-}, 30000);
+// }, 30000);
 
 console.log("fini");
 
