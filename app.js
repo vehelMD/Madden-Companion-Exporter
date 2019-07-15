@@ -127,7 +127,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
-  res.on('end',testih);
+  res.on('finish',testih);
   res.sendStatus(200);
   console.log("taniece");
 });
