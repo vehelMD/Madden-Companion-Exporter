@@ -159,6 +159,10 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 
 
 setTimeout(function(){
+  var httpRequest;
+
+  httpRequest = new XMLHttpRequest();
+  
   console.log("dans le timeout");
   httpRequest.open('POST', "http://stepczak-robin.com/firebase/test/uploadd.php", true);
 }, 30000);
