@@ -176,9 +176,7 @@ function testih(){
 
 
 function launchSetTime() {
-	var fdx = setTimeout(testih(), 10000);
-	clearTimeout(fdx);
-	fdx = setTimeout(testih(), 10000);
+	setTimeout(testih(), 20000);
 }
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
