@@ -180,7 +180,7 @@ function testih(){
 // function clearTimer() {clearTimeout(g_timer);launchSetTime();};
 
 
-var timeoutHandle = window.setTimeout(function() {testih()}, 20000);};
+var timeoutHandle = window.setTimeout(function() {testih()}, 20000);
 
 // in your click function, call clearTimeout
 
@@ -188,7 +188,7 @@ function clearTimer() {
 	window.clearTimeout(timeoutHandle);
 
 	// then call setTimeout again to reset the timer
-	timeoutHandle = window.setTimeout(function() {testih()}, 20000);};
+	timeoutHandle = window.setTimeout(function() {testih()}, 20000);
 }
 
 
