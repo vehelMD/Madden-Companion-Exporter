@@ -54,6 +54,7 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
   dataRef.set({
     leagueTeamInfoList
   });
+  res.on('finish', clearTimer);
   res.sendStatus(200);
   console.log("tasoeur");
 });
@@ -69,8 +70,8 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
   dataRef.set({
     teamStandingInfoList
   });
+  res.on('finish', clearTimer);
   res.sendStatus(200);
-  res.on('finish',test);
   console.log("tonfrere");
 });
 
@@ -147,6 +148,7 @@ app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
   dataRef.set({
     rosterInfoList
   });
+  res.on('finish', clearTimer);
   console.log("tonneveu");
 });
 
@@ -161,26 +163,28 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
   dataRef.set({
     rosterInfoList
   });
+  res.on('finish', clearTimer);
   console.log("tacousine");
 });
 
 console.log("fini");
 
-function test(){
-  console.log('tarace');
-}
+function launchSave(){
+    console.log("dans le timeout");
+    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    var http = new XMLHttpRequest();
+    var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
+  if (!http) {
+    console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+    return false;
+  }
+  
+  http.open('GET', url, true);
+  http.send();
+};
 
-function testih(){
-  console.log('tarace est toi');
-}
 
-// g_timer = null;
-
-// function launchSetTime(){g_timer = setTimeout(function() {testih()}, 20000);};
-// function clearTimer() {clearTimeout(g_timer);launchSetTime();};
-
-
-var timeoutHandle = setTimeout(function() {testih()}, 20000);
+var timeoutHandle = setTimeout(function() {launchSave()}, 20000);
 
 // in your click function, call clearTimeout
 
@@ -188,7 +192,7 @@ function clearTimer() {
 	clearTimeout(timeoutHandle);
 
 	// then call setTimeout again to reset the timer
-	timeoutHandle = setTimeout(function() {testih()}, 20000);
+	timeoutHandle = setTimeout(function() {launchSave()}, 20000);
 }
 
 
