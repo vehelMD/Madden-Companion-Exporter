@@ -126,7 +126,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
-  res.on('finish',function launchSetTime(fdx));
+  res.on('finish', launchSetTime);
   res.sendStatus(200);
   console.log("taniece");
 });
@@ -176,9 +176,9 @@ function testih(){
 
 
 function launchSetTime() {
-	var fdx = setTimeout('testih()', 10000);
+	var fdx = setTimeout(testih(), 10000);
 	clearTimeout(fdx);
-	fdx = setTimeout('testih()', 10000);
+	fdx = setTimeout(testih(), 10000);
 }
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
