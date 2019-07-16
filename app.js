@@ -174,12 +174,22 @@ function testih(){
   console.log('tarace est toi');
 }
 
-g_timer = null;
+// g_timer = null;
 
-function launchSetTime(){g_timer = setTimeout(function() {testih()}, 20000);};
-function clearTimer() {clearTimeout(g_timer);launchSetTime();};
+// function launchSetTime(){g_timer = setTimeout(function() {testih()}, 20000);};
+// function clearTimer() {clearTimeout(g_timer);launchSetTime();};
 
 
+var timeoutHandle = window.setTimeout(function() {testih()}, 20000);};
+
+// in your click function, call clearTimeout
+
+function clearTimer() {
+	window.clearTimeout(timeoutHandle);
+
+	// then call setTimeout again to reset the timer
+	timeoutHandle = window.setTimeout(function() {testih()}, 20000);};
+}
 
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
