@@ -70,7 +70,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
     teamStandingInfoList
   });
   res.sendStatus(200);
-  res.on('finish',clearTimer);
+  res.on('finish',test);
   console.log("tonfrere");
 });
 
@@ -126,7 +126,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
-  res.on('finish', launchSetTime);
+  res.on('finish', clearTimer);
   res.sendStatus(200);
   console.log("taniece");
 });
