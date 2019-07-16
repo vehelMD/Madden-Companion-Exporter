@@ -184,7 +184,7 @@ function launchSave(){
 };
 
 
-var timeoutHandle = setTimeout(function() {launchSave()}, 20000);
+var timeoutHandle = setTimeout(function() {launchSave()}, 45000);
 
 // in your click function, call clearTimeout
 
@@ -192,7 +192,7 @@ function clearTimer() {
 	clearTimeout(timeoutHandle);
 
 	// then call setTimeout again to reset the timer
-	timeoutHandle = setTimeout(function() {launchSave()}, 20000);
+	timeoutHandle = setTimeout(function() {launchSave()}, 45000);
 }
 
 
