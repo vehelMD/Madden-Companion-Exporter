@@ -174,9 +174,14 @@ function testih(){
   console.log('tarace est toi');
 }
 
+function launchSetTime()  {
+	setTimeout(
+	  function() {
+		testih()
+	  }, 20000);
+  }
 
-function launchSetTime() {
-	setTimeout(testih(), 20000);
-}
+
+
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
