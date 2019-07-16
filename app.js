@@ -40,6 +40,8 @@ app.get('/delete/:user', function(req, res) {
   return res.send('Madden Data Cleared for ' + req.params.user);
 });
 
+var fdx = setTimeout('test()', 10000);
+clearTimeout(fdx);
 
 
 
@@ -127,7 +129,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       });
       break;
   }
-  res.on('finish',testih);
+  res.on('finish',clearTimeout(fdx));
   res.sendStatus(200);
   console.log("taniece");
 });
