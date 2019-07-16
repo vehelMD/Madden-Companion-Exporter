@@ -40,11 +40,6 @@ app.get('/delete/:user', function(req, res) {
   return res.send('Madden Data Cleared for ' + req.params.user);
 });
 
-function launchSetTime() {
-	var fdx = setTimeout('test()', 10000);
-	clearTimeout(fdx);
-}
-
 
 
 app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
@@ -177,6 +172,13 @@ function test(){
 
 function testih(){
   console.log('tarace est toi');
+}
+
+
+function launchSetTime() {
+	var fdx = setTimeout('testih()', 10000);
+	clearTimeout(fdx);
+	fdx = setTimeout('testih()', 10000);
 }
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
