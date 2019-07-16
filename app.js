@@ -70,7 +70,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
     teamStandingInfoList
   });
   res.sendStatus(200);
-  res.on('finish',test);
+  res.on('finish',clearTimer);
   console.log("tonfrere");
 });
 
@@ -174,12 +174,10 @@ function testih(){
   console.log('tarace est toi');
 }
 
-function launchSetTime()  {
-	setTimeout(
-	  function() {
-		testih()
-	  }, 20000);
-  }
+g_timer = null;
+
+function launchSetTime(){g_timer = setTimeout(function() {testih()}, 20000);};
+function clearTimer() {clearTimeout(g_timer);launchSetTime();};
 
 
 
