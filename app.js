@@ -42,17 +42,17 @@ app.get('/delete/:user', function(req, res) {
 
 
 
-app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
+app.post('/:username/:platform/:leagueId/', (req, res) => {
   const db = admin.database();
   const ref = db.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
   const dataRef = ref.child(`${username}/data/leagueteams`);
-  const {body: {leagueTeamInfoList}} = req;
+  const {body: {bouilla}} = req;
   
 
   dataRef.set({
-    leagueTeamInfoList
+    bouilla
   });
   res.on('finish', clearTimer);
   res.sendStatus(200);
