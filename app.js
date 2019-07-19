@@ -173,7 +173,7 @@ function launchSave(){
     console.log("dans le timeout");
     var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var http = new XMLHttpRequest();
-    var url = 'https://liguefff.com/firebase/upload.php';
+    var url = 'https://www.liguefff.com/firebase/upload.php';
   if (!http) {
     console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
     return false;
@@ -181,11 +181,11 @@ function launchSave(){
   
   http.open('GET', url, true);
   http.send();
-  if (http.status === 200) {
-    console.log("Réponse reçue: %s", req.responseText);
-} else {
-    console.log("Status de la réponse: %d (%s)", http.status, http.statusText);
-}
+//   if (http.status === 200) {
+//     console.log("Réponse reçue: %s", req.responseText);
+// } else {
+//     console.log("Status de la réponse: %d (%s)", http.status, http.statusText);
+// }
 };
 
 
