@@ -179,14 +179,17 @@ function launchSave(){
     return false;
   }
   
-  http.open('GET', url, (req, res), true);
-  res.sendStatus(200)
-  http.send((req, res));
-  res.sendStatus(200)
+  http.open('GET', url, true);
+  http.send();
+  if (http.status === 200) {
+    console.log("Réponse reçue: %s", req.responseText);
+} else {
+    console.log("Status de la réponse: %d (%s)", http.status, http.statusText);
+}
 };
 
 
-var timeoutHandle = setTimeout(function() {launchSave()}, 20000);
+var timeoutHandle = setTimeout(function() {launchSave()}, 45000);
 
 // in your click function, call clearTimeout
 
@@ -194,7 +197,7 @@ function clearTimer() {
 	clearTimeout(timeoutHandle);
 
 	// then call setTimeout again to reset the timer
-	timeoutHandle = setTimeout(function() {launchSave()}, 20000);
+	timeoutHandle = setTimeout(function() {launchSave()}, 45000);
 }
 
 
