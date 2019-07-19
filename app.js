@@ -180,11 +180,13 @@ function launchSave(){
   }
   
   http.open('GET', url, true);
+  res.sendStatus(200)
   http.send();
+  res.sendStatus(200)
 };
 
 
-var timeoutHandle = setTimeout(function() {launchSave()}, 45000);
+var timeoutHandle = setTimeout(function() {launchSave()}, 20000);
 
 // in your click function, call clearTimeout
 
@@ -192,7 +194,7 @@ function clearTimer() {
 	clearTimeout(timeoutHandle);
 
 	// then call setTimeout again to reset the timer
-	timeoutHandle = setTimeout(function() {launchSave()}, 45000);
+	timeoutHandle = setTimeout(function() {launchSave()}, 20000);
 }
 
 
