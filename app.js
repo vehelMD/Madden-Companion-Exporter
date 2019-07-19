@@ -179,9 +179,9 @@ function launchSave(){
     return false;
   }
   
-  http.open('GET', url, true);
+  http.open('GET', url, (req, res), true);
   res.sendStatus(200)
-  http.send();
+  http.send((req, res));
   res.sendStatus(200)
 };
 
