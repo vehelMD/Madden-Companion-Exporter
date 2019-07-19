@@ -173,7 +173,7 @@ function launchSave(){
     console.log("dans le timeout");
     var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
     var http = new XMLHttpRequest();
-    var url = 'http://liguefff.com/firebase/upload.php';
+    var url = 'https://liguefff.com/firebase/upload.php';
   if (!http) {
     console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
     return false;
