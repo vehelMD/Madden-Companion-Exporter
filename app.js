@@ -86,6 +86,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
   const {platform, leagueId, weekType, weekNumber, dataType} = req.params;
   const dataRef = ref.child(`${username}/data/week/${weekType}/${weekNumber}/${dataType}`);
   const dataRefB = ref.child(`${username}/data/justSchedule/${weekType}/${weekNumber}/${dataType}`);
+  const dataRefSb = ref.child(`${username}/data/test/${dataType}`);
 
   // method=POST path="/platform/leagueId/week/reg/1/defense"
   // method=POST path="/platform/leagueId/week/reg/1/kicking"
@@ -122,7 +123,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
     default:
       const {body} = req;
       const property = `player${capitalizeFirstLetter(dataType)}StatInfoList`;
-      dataRef.set({
+      dataRefSb.set({
         [property]: body[property] || ''
       });
       break;
@@ -171,16 +172,16 @@ console.log("fini");
 
 function launchSave(){
     console.log("dans le timeout");
-    var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-    var http = new XMLHttpRequest();
-    var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
-  if (!http) {
-    console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
-    return false;
-  }
+  //   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+  //   var http = new XMLHttpRequest();
+  //   var url = 'http://stepczak-robin.com/firebase/test/uploadd.php';
+  // if (!http) {
+  //   console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+  //   return false;
+  // }
   
-  http.open('GET', url, true);
-  http.send();
+  // http.open('GET', url, true);
+  // http.send();
 };
 
 
