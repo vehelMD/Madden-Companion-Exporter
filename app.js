@@ -116,14 +116,14 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       break;
     case 'defense':
       const {body: {playerDefensiveStatInfoList}} = req;
-      dataRef.set({
+      dataRefSb.set({
         playerDefensiveStatInfoList
       });
       break;
     default:
       const {body} = req;
       const property = `player${capitalizeFirstLetter(dataType)}StatInfoList`;
-      dataRefSb.set({
+      dataRef.set({
         [property]: body[property] || ''
       });
       break;
