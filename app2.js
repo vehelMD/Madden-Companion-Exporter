@@ -19,7 +19,7 @@ admin.initializeApp({
 
 var admin = require('firebase-admin');
 var firstServiceAccount = require('./firebase-info.json');
-var secondServiceAccount = require('./firebase-info2.json');
+var secondServiceAccount = require('./firebase-info-2.json');
 
 var _first = admin.initializeApp(
   {
