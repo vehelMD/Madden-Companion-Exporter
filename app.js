@@ -40,6 +40,9 @@ var _secound = admin.initializeApp(
 // exports.first = _first;
 // exports.second = _second;
 
+var first = _first.database();
+var secound = _secound.database();
+
 
 
 // Setup
