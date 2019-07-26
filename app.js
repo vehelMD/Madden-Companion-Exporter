@@ -8,6 +8,7 @@ const app = express();
 // TODO: Enter the path to your service account json file
 // Need help with this step go here: https://firebase.google.com/docs/admin/setup
 const serviceAccount = require("./firebase-info.json");
+const backup = require("./app2.js");
 
 // TODO: Enter your database url from firebase
 admin.initializeApp({
@@ -21,6 +22,7 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+app.use(backup);
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
