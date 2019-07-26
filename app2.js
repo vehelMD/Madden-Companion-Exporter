@@ -1,19 +1,51 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var admin2 = require("firebase-admin");
+var admin = require("firebase-admin");
 
 const app = express();
 
 
 // TODO: Enter the path to your service account json file
 // Need help with this step go here: https://firebase.google.com/docs/admin/setup
-const serviceAccount = require("./firebase-info-2.json");
+const serviceAccount = require("./firebase-info.json");
 
 // TODO: Enter your database url from firebase
-admin2.initializeApp({
-  credential: admin2.credential.cert(serviceAccount),
-  databaseURL: "https://backupvehelmd.firebaseio.com"
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://vehelmd.firebaseio.com"
 });
+
+
+
+var admin = require('firebase-admin');
+var firstServiceAccount = require('./firebase-info.json');
+var secondServiceAccount = require('./firebase-info2.json');
+
+var _first = admin.initializeApp(
+  {
+    credential: admin.credential.cert(firstServiceAccount),
+    databaseURL: 'https://vehelmd.firebaseio.com'
+  }, 
+  'first' // this name will be used to retrieve firebase instance. E.g. first.database();
+);
+
+var _second = admin.initializeApp(
+  {
+    credential: admin.credential.cert(secondServiceAccount),
+    databaseURL: 'https://backupvehelmd.firebaseio.com'
+  }, 
+  'second' // this name will be used to retrieve firebase instance. E.g. second.database();
+);
+
+exports.first = _first;
+exports.second = _second;
+
+
+
+
+
+
+
 
 // Setup
 // Change the default port here if you want for local dev.
@@ -26,8 +58,6 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-console.log('dans le 2');
-
 app.get('/:user', function(req, res) {
   //return res.send('Madden Data')
   return res.send("username is set to " + req.params.user);
@@ -35,25 +65,35 @@ app.get('/:user', function(req, res) {
 
 //Clear firebase database
 app.get('/delete/:user', function(req, res) {
-  const db = admin2.database();
+  const db = first.database();
+  const db2 = secound.database();
   const ref = db.ref();
+  const ref2 = db2.ref();
   const dataRef = ref.child(req.params.user);
+  const dataRef2 = ref2.child(req.params.user);
   dataRef.remove();
+  dataRef2.remove();
   return res.send('Madden Data Cleared for ' + req.params.user);
 });
 
 
 
 app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
-  const db = admin2.database();
+  const db = first.database();
+  const db2 = secound.database();
   const ref = db.ref();
+  const ref2 = db2.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
   const dataRef = ref.child(`${username}/data/leagueteams`);
+  const dataRef2 = ref2.child(`${username}/data/leagueteams`);
   const {body: {leagueTeamInfoList}} = req;
   
 
   dataRef.set({
+    leagueTeamInfoList
+  });
+  dataRef2.set({
     leagueTeamInfoList
   });
   res.on('finish', clearTimer);
@@ -62,14 +102,20 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
 });
 
 app.post('/:username/:platform/:leagueId/standings', (req, res) => {
-  const db = admin2.database();
+  const db = first.database();
+  const db2 = secound.database();
   const ref = db.ref();
+  const ref2 = db2.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
   const dataRef = ref.child(`${username}/data/standings`);
+  const dataRef2 = ref2.child(`${username}/data/standings`);
   const {body: {teamStandingInfoList}} = req;
 
   dataRef.set({
+    teamStandingInfoList
+  });
+  dataRef2.set({
     teamStandingInfoList
   });
   res.on('finish', clearTimer);
@@ -82,12 +128,16 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
 
 
 app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', (req, res) => {
-  const db = admin2.database();
+  const db = first.database();
+  const db2 = secound.database();
   const ref = db.ref();
+  const ref2 = db2.ref();
   const { params: { username } } = req;  
   const {platform, leagueId, weekType, weekNumber, dataType} = req.params;
   const dataRef = ref.child(`${username}/data/week/${weekType}/${weekNumber}/${dataType}`);
+  const dataRef2 = ref2.child(`${username}/data/week/${weekType}/${weekNumber}/${dataType}`);
   const dataRefB = ref.child(`${username}/data/justSchedule/${weekType}/${weekNumber}/${dataType}`);
+  const dataRefB2 = ref2.child(`${username}/data/justSchedule/${weekType}/${weekNumber}/${dataType}`);
 
   // method=POST path="/platform/leagueId/week/reg/1/defense"
   // method=POST path="/platform/leagueId/week/reg/1/kicking"
@@ -105,6 +155,12 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       dataRef.set({
         gameScheduleInfoList
       });
+      dataRefB2.set({
+        gameScheduleInfoList
+      });
+      dataRef2.set({
+        gameScheduleInfoList
+      });
       break;
     case 'teamstats':
       const {body: {teamStatInfoList}} = req;
@@ -114,10 +170,19 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       dataRef.set({
         teamStatInfoList
       });
+      dataRefB2.set({
+        teamStatInfoList
+      });
+      dataRef2.set({
+        teamStatInfoList
+      });
       break;
     case 'defense':
       const {body: {playerDefensiveStatInfoList}} = req;
       dataRef.set({
+        playerDefensiveStatInfoList
+      });
+      dataRef2.set({
         playerDefensiveStatInfoList
       });
       break;
@@ -125,6 +190,9 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
       const {body} = req;
       const property = `player${capitalizeFirstLetter(dataType)}StatInfoList`;
       dataRef.set({
+        [property]: body[property] || ''
+      });
+      dataRef2.set({
         [property]: body[property] || ''
       });
       break;
@@ -140,14 +208,20 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
 // ROSTERS
 
 app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
-  const db = admin2.database();
+  const db = first.database();
+  const db2 = secound.database();
   const ref = db.ref();
+  const ref2 = db2.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
   const dataRef = ref.child(`${username}/data/freeagents`);
+  const dataRef2 = ref2.child(`${username}/data/freeagents`);
   const {body: {rosterInfoList}} = req;
   res.sendStatus(202);
   dataRef.set({
+    rosterInfoList
+  });
+  dataRef2.set({
     rosterInfoList
   });
   res.on('finish', clearTimer);
@@ -155,14 +229,20 @@ app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
 });
 
 app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
-  const db = admin2.database();
+  const db = first.database();
+  const db2 = secound.database();
   const ref = db.ref();
+  const ref2 = db2.ref();
   const { params: { username } } = req;  
   const {platform, leagueId, teamId} = req.params;
   const dataRef = ref.child(`${username}/data/team/${teamId}`);
+  const dataRef2 = ref2.child(`${username}/data/team/${teamId}`);
   const {body: {rosterInfoList}} = req;
   res.sendStatus(202);
   dataRef.set({
+    rosterInfoList
+  });
+  dataRef2.set({
     rosterInfoList
   });
   res.on('finish', clearTimer);
@@ -172,7 +252,7 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 console.log("fini");
 
 function minifyFiles(){
-  console.log("dans le minifyer")
+  console.log("dans le minifyer");
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var http = new XMLHttpRequest();
   var url = 'https://www.liguefff.com/firebase/minifyer.php';
