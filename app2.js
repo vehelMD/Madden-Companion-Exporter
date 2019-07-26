@@ -1,6 +1,4 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var admin = require("firebase-admin");
+var admin2 = require("firebase-admin");
 
 const app = express();
 
@@ -10,8 +8,8 @@ const app = express();
 const serviceAccount = require("./firebase-info-2.json");
 
 // TODO: Enter your database url from firebase
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+admin2.initializeApp({
+  credential: admin2.credential.cert(serviceAccount),
   databaseURL: "https://backupvehelmd.firebaseio.com"
 });
 
@@ -35,7 +33,7 @@ app.get('/:user', function(req, res) {
 
 //Clear firebase database
 app.get('/delete/:user', function(req, res) {
-  const db = admin.database();
+  const db = admin2.database();
   const ref = db.ref();
   const dataRef = ref.child(req.params.user);
   dataRef.remove();
@@ -45,7 +43,7 @@ app.get('/delete/:user', function(req, res) {
 
 
 app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
-  const db = admin.database();
+  const db = admin2.database();
   const ref = db.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
@@ -62,7 +60,7 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
 });
 
 app.post('/:username/:platform/:leagueId/standings', (req, res) => {
-  const db = admin.database();
+  const db = admin2.database();
   const ref = db.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
@@ -82,7 +80,7 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
 
 
 app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', (req, res) => {
-  const db = admin.database();
+  const db = admin2.database();
   const ref = db.ref();
   const { params: { username } } = req;  
   const {platform, leagueId, weekType, weekNumber, dataType} = req.params;
@@ -140,7 +138,7 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
 // ROSTERS
 
 app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
-  const db = admin.database();
+  const db = admin2.database();
   const ref = db.ref();
   const { params: { username } } = req;  
   const {platform, leagueId} = req.params;
@@ -155,7 +153,7 @@ app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
 });
 
 app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
-  const db = admin.database();
+  const db = admin2.database();
   const ref = db.ref();
   const { params: { username } } = req;  
   const {platform, leagueId, teamId} = req.params;
