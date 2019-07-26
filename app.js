@@ -26,28 +26,19 @@ var _first = admin.initializeApp(
     credential: admin.credential.cert(firstServiceAccount),
     databaseURL: 'https://vehelmd.firebaseio.com'
   }, 
-  'first' // this name will be used to retrieve firebase instance. E.g. first.database();
+  '_first' // this name will be used to retrieve firebase instance. E.g. first.database();
 );
 
-var _second = admin.initializeApp(
+var _secound = admin.initializeApp(
   {
     credential: admin.credential.cert(secondServiceAccount),
     databaseURL: 'https://backupvehelmd.firebaseio.com'
   }, 
-  'second' // this name will be used to retrieve firebase instance. E.g. second.database();
+  '_secound' // this name will be used to retrieve firebase instance. E.g. second.database();
 );
 
-exports.first = _first;
-exports.second = _second;
-
-
-var first = require('../path/to/the/file/above');
-var second = require('../path/to/the/file/above');
- 
-first.database();
-second.database();
-
-
+// exports.first = _first;
+// exports.second = _second;
 
 
 
