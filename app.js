@@ -210,6 +210,7 @@ function launchSave(){
 var timeoutHandle = setTimeout(function() {launchSave()}, 45000);
 
 setTimeout(function(){
+  console.log('dans le back');
   app.use(backup);
 }, 20000);
 
