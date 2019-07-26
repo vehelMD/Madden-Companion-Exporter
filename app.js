@@ -18,7 +18,6 @@ const app = express();
 
 
 // var admin = require('firebase-admin');
-require('firebase');
 var firstServiceAccount = require('./firebase-info.json');
 var secondServiceAccount = require('./firebase-info-2.json');
 
