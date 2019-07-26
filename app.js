@@ -18,6 +18,7 @@ const app = express();
 
 
 // var admin = require('firebase-admin');
+require('firebase');
 var firstServiceAccount = require('./firebase-info.json');
 var secondServiceAccount = require('./firebase-info-2.json');
 
@@ -41,7 +42,11 @@ exports.first = _first;
 exports.second = _second;
 
 
-
+var first = require('../path/to/the/file/above');
+var second = require('../path/to/the/file/above');
+ 
+first.database();
+second.database();
 
 
 
