@@ -5,19 +5,19 @@ var admin = require("firebase-admin");
 const app = express();
 
 
-// TODO: Enter the path to your service account json file
-// Need help with this step go here: https://firebase.google.com/docs/admin/setup
-const serviceAccount = require("./firebase-info.json");
+// // TODO: Enter the path to your service account json file
+// // Need help with this step go here: https://firebase.google.com/docs/admin/setup
+// const serviceAccount = require("./firebase-info.json");
 
-// TODO: Enter your database url from firebase
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://vehelmd.firebaseio.com"
-});
+// // TODO: Enter your database url from firebase
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: "https://vehelmd.firebaseio.com"
+// });
 
 
 
-var admin = require('firebase-admin');
+// var admin = require('firebase-admin');
 var firstServiceAccount = require('./firebase-info.json');
 var secondServiceAccount = require('./firebase-info-2.json');
 
