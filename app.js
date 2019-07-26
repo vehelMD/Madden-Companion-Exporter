@@ -63,8 +63,8 @@ app.get('/:user', function(req, res) {
 
 //Clear firebase database
 app.get('/delete/:user', function(req, res) {
-  const db = first.database();
-  const db2 = secound.database();
+  const db = first;
+  const db2 = secound;
   const ref = db.ref();
   const ref2 = db2.ref();
   const dataRef = ref.child(req.params.user);
@@ -77,8 +77,8 @@ app.get('/delete/:user', function(req, res) {
 
 
 app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
-  const db = first.database();
-  const db2 = secound.database();
+  const db = first;
+  const db2 = secound;
   const ref = db.ref();
   const ref2 = db2.ref();
   const { params: { username } } = req;  
@@ -100,8 +100,8 @@ app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
 });
 
 app.post('/:username/:platform/:leagueId/standings', (req, res) => {
-  const db = first.database();
-  const db2 = secound.database();
+  const db = first;
+  const db2 = secound;
   const ref = db.ref();
   const ref2 = db2.ref();
   const { params: { username } } = req;  
@@ -126,8 +126,8 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
 
 
 app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', (req, res) => {
-  const db = first.database();
-  const db2 = secound.database();
+  const db = first;
+  const db2 = secound;
   const ref = db.ref();
   const ref2 = db2.ref();
   const { params: { username } } = req;  
@@ -206,8 +206,8 @@ app.post('/:username/:platform/:leagueId/week/:weekType/:weekNumber/:dataType', 
 // ROSTERS
 
 app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
-  const db = first.database();
-  const db2 = secound.database();
+  const db = first;
+  const db2 = secound;
   const ref = db.ref();
   const ref2 = db2.ref();
   const { params: { username } } = req;  
@@ -227,8 +227,8 @@ app.post('/:username/:platform/:leagueId/freeagents/roster', (req, res) => {
 });
 
 app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
-  const db = first.database();
-  const db2 = secound.database();
+  const db = first;
+  const db2 = secound;
   const ref = db.ref();
   const ref2 = db2.ref();
   const { params: { username } } = req;  
