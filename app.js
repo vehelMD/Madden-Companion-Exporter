@@ -169,6 +169,20 @@ app.post('/:username/:platform/:leagueId/team/:teamId/roster', (req, res) => {
 
 console.log("fini");
 
+function minifyFiles(){
+  console.log("dans le minifyer")
+  var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+  var http = new XMLHttpRequest();
+  var url = 'https://www.liguefff.com/firebase/minifyer.php';
+if (!http) {
+  console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
+  return false;
+}
+
+http.open('GET', url, true);
+http.send();
+};
+
 function launchSave(){
     console.log("dans le timeout");
     var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
@@ -178,9 +192,12 @@ function launchSave(){
     console.log('Abandon :( Impossible de créer une instance de XMLHTTP');
     return false;
   }
+
   
   http.open('GET', url, true);
   http.send();
+
+  setTimeout(function() {minifyFiles()}, 15000);
 //   if (http.status === 200) {
 //     console.log("Réponse reçue: %s", req.responseText);
 // } else {
