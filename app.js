@@ -8,6 +8,7 @@ const app = express();
 // TODO: Enter the path to your service account json file
 // Need help with this step go here: https://firebase.google.com/docs/admin/setup
 const serviceAccount = require("./firebase-info.json");
+const backup = require("./app2");
 
 // TODO: Enter your database url from firebase
 admin.initializeApp({
@@ -207,6 +208,10 @@ function launchSave(){
 
 
 var timeoutHandle = setTimeout(function() {launchSave()}, 45000);
+
+setTimeout(function(){
+  app.use(backup);
+}, 20000);
 
 // in your click function, call clearTimeout
 
