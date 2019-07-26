@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "backup": "node app2.js"
+    "start": "node app2.js"
   },
   "author": "Josh Birdwell",
   "license": "ISC",
