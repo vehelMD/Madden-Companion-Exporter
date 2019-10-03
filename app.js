@@ -41,24 +41,6 @@ app.post('/:username/:platform/:leagueId/standings', (req, res) => {
     res.sendStatus(200);
 });
 
-app.post('/:username/:platform/:leagueId/leagueteams', (req, res) => {
-    const db = admin.database();
-    const ref = db.ref();
-    const {
-        params: { username, leagueId },
-        body: { leagueTeamInfoList: teams },
-    } = req;
-
-    teams.forEach(team => {
-        const teamRef = ref.child(
-            `data/${username}/${leagueId}/teams/${team.teamId}`
-        );
-        teamRef.update(team);
-    });
-
-    res.sendStatus(200);
-});
-
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
