@@ -1,6 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var admin = require("firebase-admin");
+const express = require('express');
+const bodyParser = require('body-parser');
+const admin = require('firebase-admin');
 
 const app = express();
 
@@ -18,10 +18,10 @@ const app = express();
 
 
 // var admin = require('firebase-admin');
-var firstServiceAccount = require('./firebase-info.json');
-var secondServiceAccount = require('./firebase-info-2.json');
+const firstServiceAccount = require('./firebase-info.json');
+const secondServiceAccount = require('./firebase-info-2.json');
 
-var _first = admin.initializeApp(
+const _first = admin.initializeApp(
   {
     credential: admin.credential.cert(firstServiceAccount),
     databaseURL: 'https://vehelmd.firebaseio.com'
@@ -29,7 +29,7 @@ var _first = admin.initializeApp(
   '_first' // this name will be used to retrieve firebase instance. E.g. first.database();
 );
 
-var _secound = admin.initializeApp(
+const _secound = admin.initializeApp(
   {
     credential: admin.credential.cert(secondServiceAccount),
     databaseURL: 'https://backupvehelmd.firebaseio.com'
@@ -40,8 +40,8 @@ var _secound = admin.initializeApp(
 // exports.first = _first;
 // exports.second = _second;
 
-var first = _first.database();
-var secound = _secound.database();
+const first = _first.database();
+const secound = _secound.database();
 
 
 
