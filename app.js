@@ -1,4 +1,4 @@
-import requests
+import requests;
 
 requests.get('http://gett.bike/', headers={'Accept-Encoding': 'identity'});
 
