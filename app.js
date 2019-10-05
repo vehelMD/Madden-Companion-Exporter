@@ -1,4 +1,3 @@
-console.log('TEST');
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
@@ -43,7 +42,7 @@ const _secound = admin.initializeApp(
 const first = _first.database();
 const secound = _secound.database();
 
-console.log('YOYO');
+
 
 // Setup
 // Change the default port here if you want for local dev.
@@ -283,7 +282,7 @@ function launchSave(){
 // } else {
 //     console.log("Status de la réponse: %d (%s)", http.status, http.statusText);
 // }
-}
+};
 
 
 var timeoutHandle = setTimeout(function() {launchSave()}, 45000);
