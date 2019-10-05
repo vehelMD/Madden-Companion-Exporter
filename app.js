@@ -4,11 +4,6 @@ const admin = require('firebase-admin');
 
 const app = express();
 
-import gzip;
-
-
-
-
 // // TODO: Enter the path to your service account json file
 // // Need help with this step go here: https://firebase.google.com/docs/admin/setup
 // const serviceAccount = require("./firebase-info.json");
