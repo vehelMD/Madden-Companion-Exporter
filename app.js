@@ -1,8 +1,3 @@
-import requests;
-
-requests.get('http://gett.bike/', headers={'Accept-Encoding': 'identity'});
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
