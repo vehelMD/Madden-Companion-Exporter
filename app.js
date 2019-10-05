@@ -1,3 +1,35 @@
+var request = require('request');
+var zlib = require('zlib');
+
+var options = {
+  //url: 'http://some.endpoint.com/api/',
+  headers: {
+    'X-some-headers'  : 'Some headers',
+    'Accept-Encoding' : 'gzip, deflate',
+  },
+  encoding: null
+};
+
+request.get(options, function (error, response, body) {
+
+  if (!error && response.statusCode == 200) {
+    // If response is gzip, unzip first
+    var encoding = response.headers['content-encoding']
+    if (encoding && encoding.indexOf('gzip') >= 0) {
+      zlib.gunzip(body, function(err, dezipped) {
+        var json_string = dezipped.toString('utf-8');
+        var json = JSON.parse(json_string);
+        // Process the json..
+      });
+    } else {
+      // Response is not gzipped
+    }
+  }
+
+});
+
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
