@@ -1,35 +1,3 @@
-const request = require('request');
-const zlib = require('zlib');
-
-const options = {
-  //url: 'http://some.endpoint.com/api/',
-  headers: {
-    'X-some-headers'  : 'Some headers',
-    'Accept-Encoding' : 'gzip, deflate',
-  },
-  encoding: null
-};
-
-request.get(options, function (error, response, body) {
-
-  if (!error && response.statusCode == 200) {
-    // If response is gzip, unzip first
-    const encoding = response.headers['content-encoding']
-    if (encoding && encoding.indexOf('gzip') >= 0) {
-      zlib.gunzip(body, function(err, dezipped) {
-        const json_string = dezipped.toString('utf-8');
-        const json = JSON.parse(json_string);
-        // Process the json..
-      });
-    } else {
-      // Response is not gzipped
-    }
-  }
-
-});
-
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
