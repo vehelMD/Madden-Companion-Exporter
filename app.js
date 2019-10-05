@@ -1,3 +1,6 @@
+var request = require('request');
+var zlib = require('zlib');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
