@@ -1,6 +1,32 @@
-const zlib = require('zlib');
-const gzip = zlib.createGzip();
-const fs = require('fs');
+var request = require('request');
+var zlib = require('zlib');
+
+var options = {
+  url: 'https://vehel.herokuapp.com',
+  headers: {
+    'X-some-headers'  : 'Some headers',
+    'Accept-Encoding' : 'gzip, deflate',
+  },
+  encoding: null
+};
+
+request.get(options, function (error, response, body) {
+
+  if (!error && response.statusCode == 200) {
+    // If response is gzip, unzip first
+    var encoding = response.headers['content-encoding']
+    if (encoding && encoding.indexOf('gzip') >= 0) {
+      zlib.gunzip(body, function(err, dezipped) {
+        var json_string = dezipped.toString('utf-8');
+        var json = JSON.parse(json_string);
+        // Process the json..
+      });
+    } else {
+      // Response is not gzipped
+    }
+  }
+
+});
 
 
 
