@@ -1,3 +1,7 @@
+const res = await agent
+		.get(url)
+		.set('Accept-Encoding', 'identity');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
