@@ -15,46 +15,5 @@
     "express": "^4.14.0",
     "firebase-admin": "^8.5.0",
     "xmlhttprequest": "^1.8.0"
-    },
-  
-  
-  "name": "zlib",
-    "description": "Zlib Library",
-    "title": "Zlib Library",
-    "version": "1.0.3",
-    "keywords": [
-        "me",
-        "zlib"
-    ],
-    "author": {
-        "name": "Embedthis Software",
-        "email": "dev@embedthis.com",
-        "url": "https://embedthis.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/embedthis/zlib.git"
-    },
-    "bugs": {
-        "email": "dev@embedthis.com",
-        "url": "http://github.com/embedthis/zlib/issues"
-    },
-    "licenses": [
-        {
-            "type": "ZLIB",
-            "url": "https://github.com/embedthis/zlib/blob/master/LICENSE.md"
-        }
-    ],
-    "files": [
-        "dist/**"
-    ],
-    "pak": {
-        "version": ">=0.10.0"
-    }
-  
-  
-  
-  
-  
-  
+    }  
 }
