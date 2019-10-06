@@ -4,17 +4,6 @@ const fs = require('fs');
 const inp = fs.createReadStream('input.txt');
 const out = fs.createWriteStream('input.txt.gz');
 
-inp.pipe(gzip)
-  .on('error', () => {
-    // handle error
-    console.log('A');
-  })
-  .pipe(out)
-  .on('error', () => {
-    // handle error
-    console.log('B');
-  });
-
 
 
 const express = require('express');
