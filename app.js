@@ -1,19 +1,3 @@
-var request = require('request');
-var zlib = require('zlib');
-
-var options = {
-  url: 'https://vehel.herokuapp.com',
-  headers: {
-    'X-some-headers'  : 'Some headers',
-    'Accept-Encoding' : 'gzip, deflate',
-  },
-  encoding: null
-};
-
-
-
-
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
@@ -314,31 +298,3 @@ function clearTimer() {
 
 
 app.listen(app.get('port'), function() { console.log('Madden Companion Exporter is running on port', app.get('port')) });
-
-
-
-
-
-
-
-
-
-request.get(options, function (error, response, body) {
-
-  if (!error && response.statusCode == 200) {
-    // If response is gzip, unzip first
-    var encoding = response.headers['content-encoding']
-    if (encoding && encoding.indexOf('gzip') >= 0) {
-      zlib.gunzip(body, function(err, dezipped) {
-        var json_string = dezipped.toString('utf-8');
-        var json = JSON.parse(json_string);
-        // Process the json..
-      });
-    } else {
-      // Response is not gzipped
-    }
-  }
-
-});
-
-
